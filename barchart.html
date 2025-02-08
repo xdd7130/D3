@@ -2,8 +2,8 @@
  * @Author: 解丹丹 xiedandan@hikvision.com.cn
  * @Date: 2025-02-07 20:16:38
  * @LastEditors: 解丹丹 xiedandan@hikvision.com.cn
- * @LastEditTime: 2025-02-08 09:42:26
- * @FilePath: \d3\test.html
+ * @LastEditTime: 2025-02-08 10:26:52
+ * @FilePath: \D3\barchart.html
  * @Description: 
  * 
  * Copyright (c) 2025, All Rights Reserved. 
@@ -21,7 +21,7 @@
 
     <script>
         // 数据
-        const data = [30, 86, 168, 281, 303, 365];
+        const data = [90, 30, 86, 168, 281, 303, 365];
 
         // SVG 容器的宽度和高度
         const width = 500;
@@ -52,10 +52,12 @@
             .attr("x", (d, i) => x(i))
             .attr("y", d => y(d))
             .attr("width", x.bandwidth())
-            .attr("height", d => y(0) - y(d))
+            .attr("height", d => y(0) - y(d)) 
             .attr("fill", "steelblue");
 
         // 创建 X 轴
+        // tickFormat： 接受一个格式化函数作为参数，该函数会将原始的刻度值（如数值或日期）转换为最终显示的字符串
+        // tickSizeOuter： 坐标轴最外侧刻度线
         svg.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(d3.axisBottom(x).tickFormat(i => i + 1).tickSizeOuter(10));
